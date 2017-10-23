@@ -1,0 +1,170 @@
+{
+  "name": "weatherDescriptor",
+  "description": "Library for representing SMHI weathersymbols through unicodes, also describe precipitation",
+  "weathers": [{
+      "name": "Clear sky",
+      "value": 1,
+      "symbol": "\u263C"
+  },
+  {
+    "name": "Nearly clear sky",
+    "value": 2,
+    "symbol": "\u2600;"
+  },
+    {
+    "name": "Variable cloudiness",
+    "value": 3,
+    "symbol": "\u26C5"
+  },
+
+  {
+    "name": "Halfclear sky",
+    "value": 4,
+    "symbol": "\u26C5"
+  },
+  {
+    "name": "Cloudy sky",
+    "value": 5,
+    "symbol": "\u2601"
+  },
+  {
+    "name": "Overcast",
+    "value": 6,
+    "symbol": "\u2601"
+  },
+  {
+    "name": "Fog",
+    "value": 7,
+    "symbol": "\u2637"
+  },
+  {
+    "name": "Light rain showers",
+    "value": 8,
+    "symbol": "\u2614"
+  },
+  {
+    "name": "Moderate rain showers",
+    "value": 9,
+    "symbol": "\u2614"
+  },
+  {
+    "name": "Heavy rain showers",
+    "value": 10,
+    "symbol": "\u2614"
+  },
+  {
+    "name": "Thunderstorm",
+    "value": 11,
+    "symbol": "\u26C8"
+  },
+  {
+    "name": "Light sleet showers",
+    "value": 12,
+    "symbol": "\u2604"
+  },
+  {
+    "name": "Moderate sleet showers",
+    "value": 13,
+    "symbol": "\u2604"
+  },
+  {
+    "name": "Heavy sleet showers",
+    "value": 14,
+    "symbol": "\u2604"
+  },
+  {
+    "name": "Light snow showers",
+    "value": 15,
+    "symbol": "\u2603"
+  },
+  {
+    "name": "Moderate snow showers",
+    "value": 16,
+    "symbol": "\u2603"
+  },
+  {
+    "name": "Heavy snow showers",
+    "value": 17,
+    "symbol": "\u2603"
+  },
+  {
+    "name": "Light rain",
+    "value": 18,
+    "symbol": "\u2602"
+  },
+  {
+    "name": "Moderate rain",
+    "value": 19,
+    "symbol": "\u2602"
+  },
+  {
+    "name": "Heavy rain",
+    "value": 20,
+    "symbol": "\u2602"
+  },
+  {
+    "name": "Thunder",
+    "value": 21,
+    "symbol": "\u2608"
+  },
+  {
+    "name": "Light sleet",
+    "value": 22,
+    "symbol": "\u2604"
+  },
+  {
+    "name": "Moderate sleet",
+    "value": 23,
+    "symbol": "\u2604"
+  },
+  {
+    "name": "Heavy sleet",
+    "value": 24,
+    "symbol": "\u2604"
+  },
+  {
+    "name": "Light snowfall",
+    "value": 25,
+    "symbol": "\u2638"
+  },
+  {
+    "name": "Moderate snowfall",
+    "value": 26,
+    "symbol": "\u2638"
+  },
+  {
+    "name": "Heavy snowfall",
+    "value": 27,
+    "symbol": "\u2638"
+  }
+],
+  "precipitation": [{
+    "name": "No precipitation",
+    "value": 0
+  },
+  {
+    "name": "Snow",
+    "value": 1
+  },
+  {
+    "name": "Snow and rain",
+    "value": 2
+  },
+  {
+    "name": "Rain",
+    "value": 3
+  },
+  {
+    "name": "Drizzle",
+    "value": 4
+  },
+  {
+    "name": "Freezing rain",
+    "value": 5
+  },
+  {
+    "name": "Freezing drizzle",
+    "value": 6
+  }
+  ]
+}
