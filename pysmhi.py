@@ -1,12 +1,15 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import json
 import urllib2
 import time
-import pprint
+import os
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
 current_milli_time = lambda: int(round(time.time() * 1000))
-
-
 def get_forecast(location_lat,location_long):
     weather_url = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/" + location_long + "/lat/" + location_lat +"/data.json"
     current_weather = json.load(urllib2.urlopen(weather_url))
@@ -46,8 +49,7 @@ def write_forecast(current_weather):
 
         for x in range (0, 48):
             if current_weather["timeSeries"][x]["validTime"][11:16]=="12:00" or current_weather["timeSeries"][x]["validTime"][11:16] == "00:00":
-                # print ("date: " + current_weather["timeSeries"][x]["validTime"][0:10])
-                # print("time: " + current_weather["timeSeries"][x]["validTime"][11:16])
+
                 weather = {}
                 weather["wind"] = current_weather["timeSeries"][x]["parameters"][15]["values"][0]
                 weather["wind_direction"] = calulate_direction(current_weather["timeSeries"][x]["parameters"][14]["values"][0])
@@ -76,7 +78,7 @@ def print_forecast():
     json_file.close()
 
     d = u'\u00B0'
-    print type(d)
+
     print("__________________________________")
     print (" Last updated: ") + data["last_published_forecast"]
     print ("----------------------------------")
@@ -110,11 +112,7 @@ def print_forecast():
         str_list.append(weather["wind_direction"])
         str_list.append("\n")
         print ''.join(str_list).encode('utf-8')
-        # print("".join([data["last_position"]["city"],": ",weather["date"]," ",weather["time"]))
-        # print("Temperature: " +  str(weather["temperature"]) + d + "C " + symbol )
-        # print("Weather: " + weather["weather"] )
-        # print("Wind: " + str(weather["wind"]) + " (" + str(weather["wind_gust"]) + ") m/s "  + str(weather["wind_direction"]))
-        # print ("-------------------------")
+
 
 
 
@@ -178,7 +176,7 @@ def create_json_template():
         json.dump(data,  json_file)
     json_file.close()
 
-
+current_milli_time = lambda: int(round(time.time() * 1000))
 try:
     with open("last_position.json", "r+") as json_file:
         last_position = json.load(json_file)
@@ -188,7 +186,7 @@ except IOError as e:
 try:
     with open("last_position.json", "r+") as json_file:
         last_position = json.load(json_file)
-    if (current_milli_time() - last_position["last_checked"]) >= 360000:
+    if (current_milli_time() - last_position["last_checked"]) >= 900000:
         location = get_location()
         loc_long = str(location.pop(0))
         loc_lat = str(location.pop(0))
