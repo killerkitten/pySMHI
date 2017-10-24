@@ -153,17 +153,20 @@ try:
         last_position = json.load(json_file)
 
 except IOError as e:
-    print e
     create_json_template()
+try:
+    with open("last_position.json", "r+") as json_file:
+        last_position = json.load(json_file)
+    if (current_milli_time() - last_position["last_checked"]) >= 360000:
+        location = get_location()
+        loc_long = str(location.pop(0))
+        loc_lat = str(location.pop(0))
 
-if (current_milli_time() - last_position["last_checked"]) >= 360000:
-    location = get_location()
-    loc_long = str(location.pop(0))
-    loc_lat = str(location.pop(0))
+        write_forecast(get_forecast(loc_lat,loc_long))
 
-    write_forecast(get_forecast(loc_lat,loc_long))
-
-    print_forecast()
-else:
-    print_forecast()
-json_file.close()
+        print_forecast()
+    else:
+        print_forecast()
+    json_file.close()
+except:
+    print ("tough luck")
