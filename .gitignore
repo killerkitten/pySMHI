@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+#last known position and weather
+last_position.json
+last_checked.txt

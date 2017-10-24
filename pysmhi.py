@@ -12,11 +12,6 @@ with open('last_position.json', 'r+') as json_file:
     last_position = json.load(json_file)
     json_file.close()
 
-if last_position['last_checked'] == 0:
-    last_position['last_checked'] = current_milli_time()
-    json_file = open("last_position.json", 'w+')
-    json_file.write(json.dumps(last_position))
-    json_file.close()
 
 if (current_milli_time() - last_position['last_checked']) >= 3600000:
 
@@ -34,7 +29,14 @@ if (current_milli_time() - last_position['last_checked']) >= 3600000:
 
     json_file = open("last_position.json", 'w+')
     json_file.write(json.dumps(last_position))
+
+    weather_url = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/" + location_long + "/lat/" + location_lat +"/data.json"
+    current_weather = json.load(urllib2.urlopen(weather_url))
+
+
     json_file.close()
+
+
 
 else:
     with open('last_position.json', 'r+') as json_file:
