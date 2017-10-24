@@ -49,12 +49,12 @@ def write_forecast(current_weather):
                 # print ("date: " + current_weather["timeSeries"][x]["validTime"][0:10])
                 # print("time: " + current_weather["timeSeries"][x]["validTime"][11:16])
                 weather = {}
-                weather["wind"] = str(current_weather["timeSeries"][x]["parameters"][15]["values"][0]).encode("utf-8")
+                weather["wind"] = current_weather["timeSeries"][x]["parameters"][15]["values"][0]
                 weather["wind_direction"] = calulate_direction(current_weather["timeSeries"][x]["parameters"][14]["values"][0])
-                weather["wind_gust"] = str(current_weather["timeSeries"][x]["parameters"][17]["values"][0]).encode("utf-8")
-                weather["temperature"] = str(current_weather["timeSeries"][x]["parameters"][11]["values"][0]).encode("utf-8")
-                weather["time"] = str(current_weather["timeSeries"][x]["validTime"][11:16]).encode("utf-8")
-                weather["date"] = str(current_weather["timeSeries"][x]["validTime"][0:10]).encode("utf-8")
+                weather["wind_gust"] = current_weather["timeSeries"][x]["parameters"][17]["values"][0]
+                weather["temperature"] = current_weather["timeSeries"][x]["parameters"][11]["values"][0]
+                weather["time"] = current_weather["timeSeries"][x]["validTime"][11:16].encode("utf-8")
+                weather["date"] = current_weather["timeSeries"][x]["validTime"][0:10].encode("utf-8")
 
                 for symbols in weather_desc["weathers"]:
                     if current_weather["timeSeries"][x]["parameters"][18]["values"][0] == symbols["value"]:
@@ -74,17 +74,48 @@ def print_forecast():
     with open("last_position.json", "r+") as json_file:
         data = json.load(json_file)
     json_file.close()
+
     d = u'\u00B0'
-    print d
+    print type(d)
     print("__________________________________")
     print (" Last updated: ") + data["last_published_forecast"]
     print ("----------------------------------")
+
     for weather in data["last_position"]["weathers"]:
-        print("" +data["last_position"]["city"] + ": " + weather["date"] + " " + weather["time"])
-        print(" Temperature: " +  weather["temperature"] + d + "C " + weather["symbol"] )
-        print(" Weather: " + weather["weather"] )
-        print(" Wind: " + str(weather["wind"]) + " (" + weather["wind_gust"] + ") m/s "  + weather["wind_direction"])
-        print ("-------------------------")
+        str_list = []
+
+
+        str_list.append(" ")
+        str_list.append(data["last_position"]["city"])
+        str_list.append(": ")
+        str_list.append(weather["date"])
+        str_list.append(" ")
+        str_list.append(weather["time"])
+
+        str_list.append("\n")
+        str_list.append(" Temp: ")
+        str_list.append(str(weather["temperature"]))
+        str_list.append(d)
+        str_list.append("C ")
+        str_list.append(weather["symbol"])
+        str_list.append("\n")
+        str_list.append(" Weather: ")
+        str_list.append(weather['weather'])
+        str_list.append("\n")
+        str_list.append(" Wind: ")
+        str_list.append(str(weather["wind"]))
+        str_list.append(" (")
+        str_list.append(str(weather["wind_gust"]))
+        str_list.append(") M/s ")
+        str_list.append(weather["wind_direction"])
+        str_list.append("\n")
+        print ''.join(str_list).encode('utf-8')
+        # print("".join([data["last_position"]["city"],": ",weather["date"]," ",weather["time"]))
+        # print("Temperature: " +  str(weather["temperature"]) + d + "C " + symbol )
+        # print("Weather: " + weather["weather"] )
+        # print("Wind: " + str(weather["wind"]) + " (" + str(weather["wind_gust"]) + ") m/s "  + str(weather["wind_direction"]))
+        # print ("-------------------------")
+
 
 
 
@@ -168,5 +199,8 @@ try:
     else:
         print_forecast()
     json_file.close()
-except:
-    print ("tough luck")
+except KeyboardInterrupt:
+    print ("Keyboard Interrupt")
+except UnicodeEncodeError as e:
+    print e
+    print ("Unicode encode error")
