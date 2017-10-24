@@ -18,14 +18,13 @@ def calulate_direction(direction):
     json_file.close()
     directions = weather_desc["directions"]
     diff = 360
-    direction = ""
     index = 0
 
     for i in range(0,len(directions)):
-        if directions[i]["value"] == target:
+        if directions[i]["value"] == direction:
             return directions[i]["name"]
-        if abs(target - directions[i]["value"]) < diff:
-            diff =  target - abs(directions[i]["value"])
+        if abs(direction - directions[i]["value"]) < diff:
+            diff =  direction - abs(directions[i]["value"])
             index = i
     return directions[index]["name"]
 
