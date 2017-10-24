@@ -12,7 +12,7 @@ def get_forecast(location_lat,location_long):
     current_weather = json.load(urllib2.urlopen(weather_url))
     return current_weather
 
-def calulate_direction(target):
+def calulate_direction(direction):
     with open("weather_desc.json", "r+") as json_file:
         weather_desc = json.load(json_file)
     json_file.close()
@@ -23,11 +23,9 @@ def calulate_direction(target):
 
     for i in range(0,len(directions)):
         if directions[i]["value"] == target:
-            direction = directions[i]["name"]
-            return direction
+            return directions[i]["name"]
         if abs(target - directions[i]["value"]) < diff:
             diff =  target - abs(directions[i]["value"])
-            direction = directions[i]["name"]
             index = i
     return directions[index]["name"]
 
