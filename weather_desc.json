@@ -9,7 +9,7 @@
   {
     "name": "Nearly clear sky",
     "value": 2,
-    "symbol": "\u2600;"
+    "symbol": "\u2600"
   },
     {
     "name": "Variable cloudiness",
@@ -166,5 +166,37 @@
     "name": "Freezing drizzle",
     "value": 6
   }
-  ]
+],
+  "directions": [{
+    "name": "N",
+    "value": 0
+  },
+  {
+    "name": "NE",
+    "value": 45
+  },
+  {
+    "name": "E",
+    "value": 90
+  },
+  {
+    "name": "SE",
+    "value": 135
+  },
+  {
+    "name": "S",
+    "value": 180
+  },
+  {
+    "name": "SW",
+    "value": 225
+  },
+  {
+    "name": "W",
+    "value": 280
+  },
+  {
+    "name": "NW",
+    "value": 315
+  }]
 }
