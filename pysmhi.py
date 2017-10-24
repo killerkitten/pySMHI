@@ -45,7 +45,6 @@ def write_forecast(current_weather):
             weather_desc = json.load(json_file)
         json_file.close()
         directions = weather_desc["directions"]
-        print directions
 
         for x in range (0, 48):
             if current_weather["timeSeries"][x]["validTime"][11:16]=="12:00" or current_weather["timeSeries"][x]["validTime"][11:16] == "00:00":
@@ -192,9 +191,10 @@ try:
         loc_lat = str(location.pop(0))
 
         write_forecast(get_forecast(loc_lat,loc_long))
-
+        print('fetched from server')
         print_forecast()
     else:
+        print('fetched from local')
         print_forecast()
     json_file.close()
 except KeyboardInterrupt:
