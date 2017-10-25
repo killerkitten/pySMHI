@@ -35,6 +35,7 @@ def write_forecast(current_weather):
     with open("last_position.json", "r+") as json_file:
         data = json.load(json_file)
     json_file.close()
+# Todo - fix this stuff
 
     if current_weather["approvedTime"][0:10] + ":" + current_weather["approvedTime"][11:16]  == data["last_published_forecast"].encode('utf-8'):
         print("No new forecast")
