@@ -1,7 +1,7 @@
 # pySMHI
 Little script for downloading weather forcast from SMHI and saving to a .json file.
 
-Position form freegeoip every 15 min, and a forecast for that position is added to last_position.json in current working directory.
+Positions retrived from freegeoip every 15 min. This position is used to retrive a forecast from SMHI, this is added to last_position.json in current working directory.
 
 Unicode symbols is from weather_desc.json according to the wsymb2 parameter wind_direction (N/NE/E/SE/S/SW/W/NW) calculated from wind_direction parameter is added to last_position.json.
 
