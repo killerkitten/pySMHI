@@ -11,8 +11,8 @@ First ever Python project. Still a work in progress.
 
 If you decide to use and improve this spagetticode, please send me a message.
 
-TODO:
- -Clean up code
- -Implement some kind of config file solution.
- -Fix the check of last forecast
- -Check wind speed parameter (seems to be off.)
+##TODO:
+ * Clean up code
+ * Implement some kind of config file solution.
+ * Fix the check of last forecast
+ * Check wind speed parameter (seems to be off.)
