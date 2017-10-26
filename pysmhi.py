@@ -48,13 +48,13 @@ def write_forecast(current_weather):
         directions = weather_desc["directions"]
 
         for x in range (0, 48):
-            if current_weather["timeSeries"][x]["validTime"][11:16]=="12:00" or current_weather["timeSeries"][x]["validTime"][11:16] == "00:00":
-
+            if current_weather["timeSeries"][x]["validTime"][11:16]=="06:00" or current_weather["timeSeries"][x]["validTime"][11:16] == "18:00":
+                
                 weather = {}
-                weather["wind"] = current_weather["timeSeries"][x]["parameters"][15]["values"][0]
-                weather["wind_direction"] = calulate_direction(current_weather["timeSeries"][x]["parameters"][14]["values"][0])
-                weather["wind_gust"] = current_weather["timeSeries"][x]["parameters"][17]["values"][0]
-                weather["temperature"] = current_weather["timeSeries"][x]["parameters"][11]["values"][0]
+                weather["wind"] = current_weather["timeSeries"][x]["parameters"][4]["values"][0]
+                weather["wind_direction"] = calulate_direction(current_weather["timeSeries"][x]["parameters"][3]["values"][0])
+                weather["wind_gust"] = current_weather["timeSeries"][x]["parameters"][11]["values"][0]
+                weather["temperature"] = current_weather["timeSeries"][x]["parameters"][1]["values"][0]
                 weather["time"] = current_weather["timeSeries"][x]["validTime"][11:16].encode("utf-8")
                 weather["date"] = current_weather["timeSeries"][x]["validTime"][0:10].encode("utf-8")
 
@@ -108,7 +108,7 @@ def print_forecast():
         str_list.append(str(weather["wind"]))
         str_list.append(" (")
         str_list.append(str(weather["wind_gust"]))
-        str_list.append(") M/s ")
+        str_list.append(") m/s ")
         str_list.append(weather["wind_direction"])
         str_list.append("\n")
         print ''.join(str_list).encode('utf-8')
